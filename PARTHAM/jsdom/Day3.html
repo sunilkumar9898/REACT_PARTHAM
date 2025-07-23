@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="list">
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul>
+    <button id="addItem">ADD ITEM</button>
+</body>
+<script>
+    let count = 3;
+    // Delegated click event handler
+    document.getElementById("list").addEventListener('click',function(event){
+        if(event.target.tagName==="LI"){
+            alert('You Clicked :' + event.target.textContent)
+        }
+    });
+
+    // Dynamically add items
+
+    document.getElementById('addItem').addEventListener('click',function(){
+        count++;
+        const li = document.createElement('li');
+        li.textContent = 'Item' + count
+        document.getElementById('list').appendChild(li);
+    });
+</script>
+</html>

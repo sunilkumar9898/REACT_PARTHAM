@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+            .book { margin: 0.5rem 0; }
+    button { margin-left: 0.5rem; }
+	#bookList {
+		margin-top: 20px;
+	}
+    </style>
+</head>
+<body>
+    <h1>My Library</h1>
+
+    <form id="bookForm">
+      <input type="text" id="title" placeholder="Book Title" required />
+      <input type="text" id="author" placeholder="Author" required />
+      <button type="submit">Add Book</button>
+    </form>
+
+    <div id="bookList"></div>
+
+
+    <script>
+        // 📚 Book Class
+class Book {
+  constructor(title, author, isRead = false) {
+    this.title = title;
+    this.author = author;
+    this.isRead = isRead;
+  }
+
+  toggleReadStatus() {
+    this.isRead = !this.isRead;
+  }
+
+  info() {
+    return `${this.title} by ${this.author} - ${this.isRead ? "Read" : "Unread"}`;
+  }
+}
+
+// 📦 Library Class with Encapsulation and localStorage
+class Library {
+  #books = [];
+
+  constructor() {
+    this.loadFromStorage();
+  }
+
+  addBook(book) {
+    this.#books.push(book);
+    this.saveToStorage();
+  }
+
+  removeBook(title) {
+    this.#books = this.#books.filter(book => book.title !== title);
+    this.saveToStorage();
+  }
+
+  toggleBookReadStatus(title) {
+    const book = this.#books.find(book => book.title === title);
+    if (book) {
+      book.toggleReadStatus();
+      this.saveToStorage();
+    }
+  }
+
+  listBooks() {
+    return this.#books;
+  }
+
+  saveToStorage() {
+    localStorage.setItem("library", JSON.stringify(this.#books));
+  }
+
+  loadFromStorage() {
+    const data = JSON.parse(localStorage.getItem("library")) || [];
+    this.#books = data.map(b => new Book(b.title, b.author, b.isRead));
+  }
+}
+
+
+
+
+
+const library = new Library();
+const bookForm = document.getElementById("bookForm");
+const bookList = document.getElementById("bookList");
+
+function renderBooks() {
+  bookList.innerHTML = "";
+  library.listBooks().forEach(book => {
+    const div = document.createElement("div");
+    div.classList.add("book");
+    div.textContent = book.info();
+
+    const toggleBtn = document.createElement("button");
+    toggleBtn.textContent = "Toggle Read";
+    toggleBtn.onclick = () => {
+      library.toggleBookReadStatus(book.title);
+      renderBooks();
+    };
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Remove";
+    deleteBtn.onclick = () => {
+      library.removeBook(book.title);
+      renderBooks();
+    };
+
+    div.append(toggleBtn, deleteBtn);
+    bookList.appendChild(div);
+  });
+}
+
+// Handle form submission
+bookForm.onsubmit = e => {
+  e.preventDefault();
+  const title = document.getElementById("title").value.trim();
+  const author = document.getElementById("author").value.trim();
+
+  if (title && author) {
+    const newBook = new Book(title, author);
+    library.addBook(newBook);
+    renderBooks();
+    bookForm.reset();
+  }
+};
+
+renderBooks();
+    </script>
+</body>
+</html>

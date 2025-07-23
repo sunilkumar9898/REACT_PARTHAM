@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Throttle</title>
+    </head>
+    <body>
+        <input type="text" id="searchbox" />
+        <div>
+            <h6>count</h6>
+            <p id="count">0</p>
+            <button id="click">Click</button>
+        </div>
+    </body>
+    <script>
+        const throttle = (fn, delay) => {
+            let lastTime = 0;
+            return function (args) {
+                const now = Date.now();
+                if (now - lastTime >= delay) {
+                    fn(args);
+                    lastTime = now;
+                }
+            };
+        };
+        // const throttleSearch = throttle(searchquery, 1000);
+
+        // function searchquery(value) {
+        //     console.log(value);
+        // }
+        // document.getElementById("searchbox").addEventListener("input", (e) => {
+        //     throttleSearch(e.target.value);
+        // });
+
+        let clickCount = 0;
+        const countText = document.getElementById("count");
+
+        function handleClick() {
+            clickCount++;
+            countText.innerText = clickCount;
+        }
+
+        const throttledClick = throttle(handleClick, 1000);
+
+        document
+            .getElementById("click")
+            .addEventListener("click", throttledClick);
+    </script>
+</html>
