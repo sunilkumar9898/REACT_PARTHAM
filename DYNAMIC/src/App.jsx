@@ -7,6 +7,8 @@ import DynamicRadio from './components/DynamicRadio'
 import DynamicInput from './components/DynamicInput'
 import DynamicCheckBox from './components/DynamicCheckBox'
 import Wrapper from './components/ChildrenProp/Wrapper'
+import Axios from './components/Axios'
+import UseCount from './components/UseCount'
 
 const INTIAL_SUBJECT_LIST = ["MATH","HINDI","ENGLISH" ,"SCIENCE" ,"SOCIAL"]
 const INTIAL_HOBBIES_LIST = ["GYM","FOTBALL","VIDEOGAME" ,"MUSIC" ,"DANCE"]
@@ -43,7 +45,7 @@ console.log(data, 'data');
 
   return (
       <>
-          <Wrapper>
+          {/* <Wrapper>
               <>
                   <DynamicInput
                       currentValue={formData.firtsName}
@@ -101,7 +103,10 @@ console.log(data, 'data');
 
                   <button onClick={handleSubmit}>Submit</button>
               </>
-          </Wrapper>
+          </Wrapper> */}
+
+          {/* <Axios/> */}
+          <UseCount/>
       </>
   );
 }

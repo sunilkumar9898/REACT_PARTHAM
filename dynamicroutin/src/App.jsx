@@ -8,6 +8,7 @@ import User from "./pages/User";
 
 import './App.css'
 import AppRoutes from './Layout/AppRoutes';
+import Axios from '../../DYNAMIC/src/components/Axios';
 
 
 
@@ -16,7 +17,8 @@ function App() {
 
   return (
       <>
-        <AppRoutes/>
+      <AppRoutes />
+  
 
       </>
   );
