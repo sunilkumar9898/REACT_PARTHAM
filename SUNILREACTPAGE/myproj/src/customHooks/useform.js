@@ -1,20 +1,17 @@
 import { useState } from "react"
 
-export const UseForm = () => {
-    const [value, setValue] = useState({});
-    const [data, setData] = useState([]);
+export const useForm = (intialValue) => {
+    const [value, setValue] = useState(intialValue ?? {});
 
-console.log(data,'value');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setValue((prev)=>({...prev ,[name]:value}))
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        setData([...data,value]);
-        setValue({})
+    const resetValue = () => {
+        setValue(intialValue)
     }
-    return { value, handleChange, handleSubmit }
+
+    return { value, handleChange, resetValue }
 }
