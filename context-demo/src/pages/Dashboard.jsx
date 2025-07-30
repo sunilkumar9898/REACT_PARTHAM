@@ -22,7 +22,7 @@ const Dashboard = () => {
     };
 
     const goToPost = () => {
-        navigate("/post");
+        navigate("/secure/post");
     };
     return (
         <div>

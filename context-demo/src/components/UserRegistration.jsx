@@ -23,7 +23,7 @@ const UserRegistration = () => {
     e.preventDefault()
     setUser({...formData})
     setFormData(INTIAL_FORM_VALUE)
-    navigate('/dashboard')
+    navigate('/secure/dashboard')
   }
   return (
       <div>
