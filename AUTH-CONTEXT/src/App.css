@@ -1,29 +1,2 @@
 
 @import "tailwindcss";
-.post-container {
-  padding: 20px;
-}
-
-.create-btn {
-  margin-bottom: 20px;
-  padding: 10px 20px;
-  background-color: #1976d2;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  align-self: flex-start;
-}
-
-.post-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.post-card {
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 10px;
-  background-color: #f9f9f9;
-}
