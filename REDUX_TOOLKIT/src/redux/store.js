@@ -1,11 +1,14 @@
-import { legacy_createStore as createStore } from 'redux'
-import { counterReducer } from './reducer'
+import {  legacy_createStore as createStore } from 'redux'
+
+import { rootReducer } from './reducers/rootReducer';
 
 
 // const store = createStore(counterReducer);
 
+
+
 const store = createStore(
-    counterReducer,
+    rootReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
