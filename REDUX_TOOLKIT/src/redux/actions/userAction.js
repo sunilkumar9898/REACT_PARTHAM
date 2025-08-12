@@ -4,12 +4,14 @@ export const getUsers = (user) => ({
     payload: user
 })
 
-// export const editData = (user) => ({
-//     type: 'EDIT',
-//     payload:user
-// })
 
-// export const deleteData = (user) => ({
-//     type: 'DELETE',
-//     payload:user
-// })
+
+export const edituser = (user) => ({
+    type: 'EDIT',
+    payload:user
+})
+
+export const deleteUser = (user) => ({
+    type: 'DELETE',
+    payload:user
+})
