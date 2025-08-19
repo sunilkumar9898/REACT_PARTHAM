@@ -1,0 +1,19 @@
+/* Submenu dropdown ka padding kam karna */
+.ant-menu-submenu-popup .ant-menu {
+  padding: 2px 0 !important;
+}
+
+/* Har submenu item ko compact banana */
+.ant-menu-submenu-popup .ant-menu-item {
+  padding: 4px 12px !important;
+  line-height: 28px !important;
+  min-height: 28px !important;
+}
+
+/* Hover color thoda modern */
+.ant-menu-submenu-popup .ant-menu-item:hover {
+  background-color: #4cafef !important;
+  color: #fff !important;
+}
+
+

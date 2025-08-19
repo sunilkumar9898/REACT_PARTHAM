@@ -115,23 +115,33 @@ const HomeSection = () => {
             <div
                 style={{
                     background:
-                        "linear-gradient(90deg, #6a11cb 0%, #2575fc 100%)",
-                    padding: "50px 0",
+                        "linear-gradient(rgb(123,70,239), #70c6fb 0%, #7b5f78 100%)",
+                    padding: "100px 0",
                     textAlign: "center",
                     color: "#fff",
                 }}>
                 <h1 style={{ fontSize: "32px", marginBottom: "10px" }}>
                     Have a Question?
                 </h1>
-                <p style={{ marginBottom: "30px" }}>
+                <p style={{ marginBottom: "30px", fontStyle: "italic" }}>
                     If you have any question you can ask below or enter what you
                     are looking for!
                 </p>
                 <Input
                     placeholder="Type your search terms here"
-                    style={{ width: "50%", marginRight: "10px" }}
+                    style={{ width: "50%", marginRight: "10px" ,lineHeight:"19px" ,padding:"12px" , borderRadius:"0px"}}
                 />
-                <Button type="primary" icon={<SearchOutlined />}>
+                <Button
+                    style={{
+                        background: "#3f4b55",
+                        fontSize: " 14px",
+                        lineHeight: "19px",
+                        fontWeight: "600",
+                        color: "#fff",
+                        border: "none",
+                        padding: "22px",
+                        borderRadius:"0"
+                    }}>
                     Search
                 </Button>
             </div>
@@ -220,6 +230,8 @@ const HomeSection = () => {
                     </Col>
                 </Row>
             </Content>
+
+            
         </Layout>
     );
 };
